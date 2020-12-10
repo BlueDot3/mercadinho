@@ -1,0 +1,158 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;  
+}
+
+body{
+    background:#fff;
+    
+    overflow-x: hidden;
+    
+}
+
+header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;	
+	transition:	0.6s;
+	padding: 40px 100px;
+	z-index: 100000;
+	background:  #000;
+}
+
+header.sticky{
+	padding: 15px 100px;
+	background: #800000;
+}
+
+img{
+	width: 100px;
+	height: 100px;
+}
+.logo{
+	position:absolute;
+	top:5px;
+	width: 0px;
+	height: 0px;
+}
+.background-banner {
+    position: relative;
+    background-color: antiquewhite;
+}
+.banner{
+   position: absolute;
+    width: 115vw;
+    height: 114vh;
+    left:-200px;
+    top:-91.5px;
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+	
+header ul{
+	
+	display:flex; 
+	justify-content: center;
+	align-items: center;
+}
+
+header ul li{
+	
+	list-style: none;
+}
+
+header ul li a{
+	
+	margin: 10px 15px;
+	text-decoration: none;
+	color: #fff;
+	letter-spacing:2px;
+	font-weight: 300px;
+	transition: 0.6s;
+	
+	
+}
+
+.background-banner {
+    position: relative;
+    background-color: antiquewhite;
+}
+.banner{
+    position: absolute;
+    width: 115vw;
+    height: 115vh;
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+header.sticky .logo,
+header.sticky ul li a{
+	transition: 0.6s;
+    color: #fff;
+}
+
+header.sticky .logo{
+	top:-10px;
+	transition: 0.6s;
+}
+.carousel {
+    margin-top: 180px;
+    margin-left: 160px;
+    height: 450px;
+    width: 1050px;
+}
+
+#img-carossel{
+    height: 450px;
+    width: 100%;
+    
+}
+footer{
+    padding-top: 12px;
+    text-align: center;
+    height: 70px;
+    background-color: #eeedf3;
+}
+
+.lbl-footer{
+    margin-top: 10px;
+}
+.div-contato {
+    background: #1b1b12;
+    margin-top: 300px;
+}
+
+.lbl-titulo{
+    width: 100%;
+    color:#b68809;
+    font-weight: bold;
+}
+
+.lbl-dado{
+    width: 100%;
+    color: white;
+}
+.div-login{
+	text-align: right;
+	
+}
