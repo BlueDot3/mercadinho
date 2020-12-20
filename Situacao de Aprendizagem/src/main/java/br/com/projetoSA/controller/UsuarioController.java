@@ -34,26 +34,28 @@ public class UsuarioController {
 	
 	@PostMapping("/cadastro/usuario/save")
 	public String saveUsuario(Usuario usuario) {
-		try {
-			if(usuario.getId() == null) {
-				List<Permissao> permissao = permissaoRepository.findByNomeLike("padrao");
-				if(permissao == null) {
-					permissao.get(0).setNome("padrao");
-					permissaoRepository.save(permissao.get(0));
-				}
-				usuario.setPermissoes(permissaoRepository.findByNomeLike("padrao"));
-			}
-			else {
+
+			if (usuario.getLogin() == null) {
+
+				usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+				usuarioRepository.save(usuario);
+
+				// List<Permissao> permissao = permissaoRepository.findByNomeLike("padrao");
+				// if(permissao == null) {
+				// 	permissao.get(0).setNome("padrao");
+				// 	permissaoRepository.save(permissao.get(0));
+				// }
+				// usuario.setPermissoes(permissaoRepository.findByNomeLike("padrao"));
 				
+			} else {
+				System.out.println("Este usuário já existe!");
 			}
-			String encodedPassword = bCryptPasswordEncoder.encode(usuario.getSenha());
-			usuario.setSenha(encodedPassword);
-			usuarioRepository.save(usuario);
-			
-		} catch(Exception e) {
-			System.out.println("Erro: " + e.getMessage());
-		}
-		return "redirect:/login";
+
+			return "redirect:/login";
+
+			// String encodedPassword = bCryptPasswordEncoder.encode(usuario.getSenha());
+			// usuario.setSenha(encodedPassword);
+			// usuarioRepository.save(usuario);
 	}
 
 }
