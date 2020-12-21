@@ -35,7 +35,7 @@ public class UsuarioController {
 	@PostMapping("/cadastro/usuario/save")
 	public String saveUsuario(Usuario usuario) {
 
-			if (usuario.getLogin() == null) {
+			if (usuarioRepository.findByLogin(usuario.getLogin()) == null) {
 
 				usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 				usuarioRepository.save(usuario);
