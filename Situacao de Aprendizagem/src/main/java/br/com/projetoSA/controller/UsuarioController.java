@@ -26,13 +26,13 @@ public class UsuarioController {
 	@Autowired
 	private PermissaoRepository permissaoRepository;
 	
-	@GetMapping("/cadastro/usuario")
+	@GetMapping("/usuario/add")
 	public String addUsuario(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "/cadastro/usuario";
+		return "usuario/add";
 	}
 	
-	@PostMapping("/cadastro/usuario/save")
+	@PostMapping("/usuario/add/save")
 	public String saveUsuario(Usuario usuario) {
 
 			if (usuarioRepository.findByLogin(usuario.getLogin()) == null) {
