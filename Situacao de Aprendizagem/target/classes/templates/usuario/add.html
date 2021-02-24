@@ -44,7 +44,7 @@
                     </ul>
                 </div><!-- social media -->
                 <p class="description description-second">Ou use seu email para cadastrar:</p>
-                <form class="form"  th:action="@{/cadastro/usuario/save}" th:object="${usuario}" method="POST">
+                <form class="form"  th:action="@{/usuario/add/save}" th:object="${usuario}" method="POST">
                    
                     <div id = "msg-erro" class = "msg">
                     <label>Senhas não são semelhantes</label>
