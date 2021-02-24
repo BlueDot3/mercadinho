@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{../css/cadastro.css}">
+
+	<link rel="stylesheet" th:href="@{../fontawesome-free-5.15.1-web/css/all.min.css}">
+	<title>Login</title>
+</head>
+<body>
+
+	<div class="container">
+	<section class="image-responsive">
+		<img class="banner" th:src="@{../images/MercadoImagem.jpg}">
+	</section>
+        <div class="content first-content">
+            <div class="first-column">
+                <h2 class="title title-primary">Bem vindo de novo!</h2>
+                <p class="description description-primary">Já esta conectado?</p>
+                <p class="description description-primary">Por favor faça login!</p>
+                <button id="signin" class="btn btn-primary" th:onclick="|window.location.href='@{/login}'|">sign in</button>
+            </div>    
+            <div class="second-column">
+                <h2 class="title title-second">Crie sua Conta</h2>
+                <div class="social-media">
+                    <ul class="list-social-media">
+                        <a class="link-social-media" href="#">
+                            <li class="item-social-media">
+                                <i class="fab fa-facebook-f"></i>        
+                            </li>
+                        </a>
+                        <a class="link-social-media" href="#">
+                            <li class="item-social-media">
+                                <i class="fab fa-google-plus-g"></i>
+                            </li>
+                        </a>
+                        <a class="link-social-media" href="#">
+                            <li class="item-social-media">
+                                <i class="fab fa-linkedin-in"></i>
+                            </li>
+                        </a>
+                    </ul>
+                </div><!-- social media -->
+                <p class="description description-second">Ou use seu email para cadastrar:</p>
+                <form class="form"  th:action="@{/usuario/add/save}" th:object="${usuario}" method="POST">
+                   
+                    <div id = "msg-erro" class = "msg">
+                    <label>Senhas não são semelhantes</label>
+                	</div>       
+                <div id = "msg-sucesso" class = "msg">
+                    <label>As senhas correspondem</label>
+                </div>
+                    <label class="label-input" for="">
+                        <i class="far fa-user icon-modify"></i>
+                        <input type="text" placeholder="Nome" name="nome" th:field="*{nome}"  minlength="7" maxlength=60 required />
+                    </label>
+                    
+                    <label class="label-input" for="">
+                        <i class="far fa-envelope icon-modify"></i>
+                        <input  placeholder="Email" name="login" th:field="*{login}" type="text" minlength="7" maxlength=60 required />
+                    </label>
+                    
+                    <label class="label-input" for="">
+                        <i class="far fa-address-card icon-modify"></i>
+                        <input type="text" placeholder="Cpf" name="Cpf" th:field="*{cpf}"  minlength="11" maxlength=11 required />
+                    </label>
+                    
+                    <label class="label-input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" id="senha1" placeholder="Senha" name="senha" th:field="*{senha}"  minlength="7" maxlength=60 required th:onblur="verificar()" />
+                    </label>
+                    <label class="label-input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" id="senha2" placeholder="Confirmar Senha"    minlength="7" maxlength=60 required th:onblur="verificar()" />
+                    </label>
+                    
+                    
+                    <button class="btn btn-second">sign up</button>        
+                </form>
+            </div>
+        </div>
+        >
+        </div>
+    
+
+
+<!-- 
+	
+	<section class="image-responsive">
+		<img class="banner" th:src="@{../images/MercadoImagem.jpg}">
+	</section>
+	<div class="container-login">
+		<div class="form-group titulo-login">Cadastrar-se</div>
+		<form class="form-login" th:action="@{/cadastro/usuario/save}" th:object="${usuario}" method="POST">
+			<div class="form-group">
+				<label>Nome</label>
+				<input class="form-control" name="nome" th:field="*{nome}" type="text" minlength="7" maxlength=60 required />
+			</div>
+			
+			<div class="form-group">
+				<label>Login ou email</label>
+				<input class="form-control" name="login" th:field="*{login}" type="text" minlength="7" maxlength=60 required />
+			</div>
+			
+			<div class="form-group">
+				<label>Senha</label>
+				<input class="form-control" name="senha" th:field="*{senha}" type="password" minlength="7" maxlength=60  required />
+			</div>
+			
+			<div class="form-group btn-login">
+				<button class="btn btn-success" type="submit">Salvar</button>
+			</div>
+		</form>
+	</div> -->
+
+	<!-- <div class="footer">
+		<div class="inner_footer">
+			<div class="logo_container">
+				<img th:src="@{/images/logoBranca.png}"/>
+			</div>
+			
+			<div class="footer_third">
+				<h1>Precisa de ajuda ?</h1>
+				<a href="#">Termos &amp; Condições</a> <a href="#">Políticas de privacidade</a>
+			</div>
+			
+			<div class="footer_third">
+				<h1>Mais</h1>
+				<a href="#">Termos &amp; Condições</a> <a href="#">Políticas de privacidade</a>
+			</div>
+			
+			<div class="footer_third">
+				<h1>Contato</h1>
+				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+				<li><a href="#"><i class="fab fa-twitter"></i></a></li> 
+				<span>
+					Telefone : 3223-2332 <br> CEP: 12345-678<br>
+					Florianópolis, Santa Catarina <br>
+				</span>
+			</div>
+		</div>
+	</div> -->
+
+	<script th:src="@{../jquery-3.5.1/jquery-3.5.1.js}"></script>
+	<script th:src="@{../bootstrap-4.5.3-dist/js/bootstrap.min.js}"></script>
+	<script th:src="@{../js/main.js}"></script>
+</body>
+</html>

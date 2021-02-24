@@ -6,5 +6,6 @@ import br.com.projetoSA.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
+  public Produto findProduto(String nome, Float preco);
 	
 }
