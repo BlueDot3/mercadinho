@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.lang.NonNull;
 
+
 @Entity(name = "funcionario")
 public class Funcionario {
 

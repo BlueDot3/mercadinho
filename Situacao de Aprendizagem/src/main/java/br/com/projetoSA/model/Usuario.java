@@ -31,8 +31,8 @@ public class Usuario {
 	@NonNull
 	@Size(max = 120)
 	private String senha;
-	@NonNull
 	
+  @NonNull
 	@Size(max = 14)
 	private String cpf;
 
@@ -129,8 +129,6 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
 
 	public String getCpf() {
 		return cpf;
