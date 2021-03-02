@@ -8,8 +8,12 @@ import br.com.projetoSA.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	public Usuario findByLogin(String login);
+	Usuario findByLogin(String login);
 
-  public List<Usuario> findBySenha(String senha);
+  Usuario deleteByLogin(String login);
+
+  Usuario findByCpf(String cpf);
+
+  // public List<Usuario> findBySenha(String senha);
 
 }
