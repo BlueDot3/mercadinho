@@ -50,4 +50,22 @@ public class UsuarioController {
 			return "redirect:/usuario/add";
 		}	
 	}
+
+	@PostMapping("/usuario/delete")
+	public String deleteUsuario(@CurrentSecurityContext(expression="authentication.name") String login) { 
+
+		try {
+
+			usuarioRepository.deleteByLogin(login);
+
+			return "redirect:/usuario/add";
+
+		} catch (Exception e) {
+			
+			System.out.println("ERRO: " + e);
+
+			return "redirect:/usuario/view";
+
+		}	
+	}
 }
