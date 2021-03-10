@@ -38,10 +38,10 @@ public class Produto{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((mercadoNome == null) ? 0 : mercadoNome.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + mercadoNome.hashCode();
+		result = prime * result + nome.hashCode();
 		result = prime * result + Float.floatToIntBits(preco);
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + tipo.hashCode();
 		return result;
 	}
 
@@ -59,24 +59,13 @@ public class Produto{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (mercadoNome == null) {
-			if (other.mercadoNome != null)
-				return false;
-		} else if (!mercadoNome.equals(other.mercadoNome))
+		if (!mercadoNome.equals(other.mercadoNome))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
+		if (!nome.equals(other.nome))
 			return false;
 		if (Float.floatToIntBits(preco) != Float.floatToIntBits(other.preco))
 			return false;
-		if (tipo == null) {
-			if (other.tipo != null)
-				return false;
-		} else if (!tipo.equals(other.tipo))
-			return false;
-		return true;
+		return tipo.equals(other.tipo);
 	}
 
 	public Long getId() {

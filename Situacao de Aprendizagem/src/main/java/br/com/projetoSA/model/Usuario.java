@@ -46,10 +46,10 @@ public class Usuario {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + login.hashCode();
+		result = prime * result + nome.hashCode();
 		result = prime * result + ((permissoes == null) ? 0 : permissoes.hashCode());
-		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + senha.hashCode();
 		return result;
 	}
 
@@ -67,27 +67,16 @@ public class Usuario {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (login == null) {
-			if (other.login != null)
-				return false;
-		} else if (!login.equals(other.login))
+		if (!login.equals(other.login))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
+		if (!nome.equals(other.nome))
 			return false;
 		if (permissoes == null) {
 			if (other.permissoes != null)
 				return false;
 		} else if (!permissoes.equals(other.permissoes))
 			return false;
-		if (senha == null) {
-			if (other.senha != null)
-				return false;
-		} else if (!senha.equals(other.senha))
-			return false;
-		return true;
+		return senha.equals(other.senha);
 	}
 
 	public Long getId() {

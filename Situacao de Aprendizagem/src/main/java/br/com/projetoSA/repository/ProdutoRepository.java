@@ -6,5 +6,5 @@ import br.com.projetoSA.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	
-  Produto findByPrecoAndNome(String nome, Float preco);
+  Produto findByPrecoAndNome(float preco, String nome);
 }
