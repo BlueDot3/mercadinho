@@ -32,7 +32,7 @@ public class Usuario {
 	@Size(max = 120)
 	private String senha;
 	
-  @NonNull
+  	@NonNull
 	@Size(max = 14)
 	private String cpf;
 
