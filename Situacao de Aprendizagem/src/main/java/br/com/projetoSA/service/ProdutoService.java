@@ -4,9 +4,9 @@ import br.com.projetoSA.model.Produto;
 
 public interface ProdutoService {
     
-    String saveAddProduto(Produto produto);
+    String saveProduto(Produto produto);
 
-    String saveEditProduto(Long id, Produto produto);
+    String updateProduto(Long id, Produto produto);
 
     String deleteProduto(Long id);
 }

@@ -22,40 +22,54 @@ public class ProdutoController {
 	@Autowired
 	ProdutoService produtoService;
 	
+	// Lista de produtos
+
 	@GetMapping("/produto/list")
 	public String listProduto(Model model) {
+
 		model.addAttribute("produtos", produtoRepository.findAll(Sort.by("nome")));
 		return "produto/list";
 	}
-	
+
+	// Visualização de um produto 
+
 	@GetMapping("/produto/view/{id}")
 	public String viewProduto(@PathVariable long id, Model model) {
+
 		model.addAttribute("produto", produtoRepository.findById(id));
 		return "/produto/view";
 	}
 
+	// Adicionar produto
+
 	@GetMapping("/produto/add")
 	public String addProduto() {
+		
 		return "produto/add";
 	}
 
 	@PostMapping("/produto/save")
 	public String saveProduto(Produto produto) {
 
-		return produtoService.saveAddProduto(produto);
+		return produtoService.saveProduto(produto);
 	}
+
+	// Editar produto
 
 	@GetMapping("/produto/edit")
 	public String editProduto() {
+
 		return "produto/edit";
 	}
 	
 	@PutMapping("/produto/save/{id}")
-	public String saveEditProduto(@PathVariable Long id, Produto produto) {
+	public String updateProduto(@PathVariable Long id, Produto produto) {
 		
-		return produtoService.saveEditProduto(id, produto);
+		return produtoService.updateProduto(id, produto);
 	}
-	
+
+	// Deletar produto
+
 	@DeleteMapping("/produto/delete/{id}")
 	public String deleteProduto(@PathVariable Long id) {
 

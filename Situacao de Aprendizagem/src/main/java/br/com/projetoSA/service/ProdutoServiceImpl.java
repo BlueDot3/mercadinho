@@ -12,8 +12,10 @@ public class ProdutoServiceImpl implements ProdutoService{
     @Autowired
     ProdutoRepository produtoRepository;
 
+    // Save produto
+
     @Override
-    public String saveAddProduto(Produto produto) {
+    public String saveProduto(Produto produto) {
 
         try {
 
@@ -29,8 +31,10 @@ public class ProdutoServiceImpl implements ProdutoService{
         }
     }
 
+    // Update produto 
+
     @Override
-    public String saveEditProduto(Long id, Produto produto) {
+    public String updateProduto(Long id, Produto produto) {
 
         try {
 
@@ -48,6 +52,8 @@ public class ProdutoServiceImpl implements ProdutoService{
 
 		}   
     }
+
+    // Delete produto
 
     @Override
     public String deleteProduto(Long id) {
