@@ -1,10 +1,12 @@
 package br.com.projetoSA.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.projetoSA.model.Produto;
 import br.com.projetoSA.repository.ProdutoRepository;
 
+@Service
 public class ProdutoServiceImpl implements ProdutoService{
     
     @Autowired
@@ -57,7 +59,7 @@ public class ProdutoServiceImpl implements ProdutoService{
             return "redirect:/produto/list";
 
         } catch (Exception e) {
-            
+
             System.out.println("ERRO: " + e);
 
 			return "redirect:/produto/edit";
