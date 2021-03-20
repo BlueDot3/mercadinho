@@ -23,6 +23,8 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 
+	// Visualizar usuário
+
 	@GetMapping("/usuario/view")
 	public String viewUsuario(Model model, @CurrentSecurityContext(expression="authentication.name") String login) {
 
@@ -30,6 +32,8 @@ public class UsuarioController {
 
 		return "usuario/view";
 	}
+
+	// Adicionar usuário
 
 	@GetMapping("/usuario/add")
 	public String addUsuario(Model model) {
@@ -41,8 +45,10 @@ public class UsuarioController {
 	@PostMapping("/usuario/save")
 	public String saveAddUsuario(Usuario usuario) {
 
-		return usuarioService.saveAddUsuario(usuario);	
+		return usuarioService.saveUsuario(usuario);	
 	}
+
+	// Editar usuário
 
 	@GetMapping("/usuario/edit")
 	public String editUsuario(Model model, @CurrentSecurityContext(expression="authentication.name") String login) {
@@ -55,9 +61,11 @@ public class UsuarioController {
 	@PutMapping("/usuario/save")
 	public String saveEditUsuario(Usuario usuario) {
 
-		return usuarioService.saveEditUsuario(usuario);
+		return usuarioService.updateUsuario(usuario);
 	}
 	
+	// Deletar usuário
+
 	@DeleteMapping("/usuario/delete")
 	public String deleteUsuario(@CurrentSecurityContext(expression="authentication.name") String login) { 
 

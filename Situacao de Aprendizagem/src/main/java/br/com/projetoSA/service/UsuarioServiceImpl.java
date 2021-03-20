@@ -13,8 +13,10 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Autowired
     UsuarioRepository usuarioRepository;
 
+	// Save usuário
+
     @Override
-    public String saveAddUsuario(Usuario usuario) {
+    public String saveUsuario(Usuario usuario) {
 
         if (usuarioRepository.findByLogin(usuario.getLogin()) == null && usuarioRepository.findByCpf(usuario.getCpf()) == null) {
 
@@ -32,8 +34,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 		}
     }
 
+	// Update usuário
+
     @Override
-    public String saveEditUsuario(Usuario usuario) {
+    public String updateUsuario(Usuario usuario) {
 
         try {
 
@@ -49,6 +53,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 		}    
     }
+
+	// Delete usuário
 
     @Override
     public String deleteUsuario(String login) {

@@ -4,9 +4,9 @@ import br.com.projetoSA.model.Usuario;
 
 public interface UsuarioService {
     
-    String saveAddUsuario(Usuario usuario);
+    String saveUsuario(Usuario usuario);
 
     String deleteUsuario(String login);
 
-    String saveEditUsuario(Usuario usuario);
+    String updateUsuario(Usuario usuario);
 }
