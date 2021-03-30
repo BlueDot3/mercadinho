@@ -3,105 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" th:href="@{../css/login.css}">
+<link rel="stylesheet" th:href="@{../css/Login/usuario.css}">
 <link rel="stylesheet"
 	th:href="@{../fontawesome-free-5.15.1-web/css/all.min.css}">
 <title>Login</title>
 </head>
 <body>
 
-	<div class="containerL">
-	<div class="background-banner">
-		<img class="banner" th:src="@{images/mercadoBlur.jpg}">
-	</div>
-        <div class="content first-content">
-            <div class="first-column">
-                <h2 class="title title-primary">Ola, amigo!</h2>
-                <p class="description description-primary">Não esta conectado?</p>
-                <p class="description description-primary">Cadastre-se com seus dados </p>
-                <button id="signin" class="btn btn-primary" th:onclick="|window.location.href='@{/usuario/add}'|"> sign up</button>
-            </div>    
-            <div class="second-column">
-                <h2 class="title title-second">Logue sua conta</h2>
-                <div class="social-media">
-                    <ul class="list-social-media">
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-facebook-f"></i>        
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-google-plus-g"></i>
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-linkedin-in"></i>
-                            </li>
-                        </a>
-                    </ul>
-                </div><!-- social media -->
-                <p class="description description-second">Ou faça se login com seus dados:</p>
-                <form class="form" th:action="@{/login}" method="POST">
-
-                    <label class="label-input" for="">
-                        <i class="far fa-envelope icon-modify"></i>
-                        <input type="text" placeholder="Email" minlength="7" maxlength="60"
-						name="username"  required />
-                    </label>
-                    
-                    <label class="label-input" for="">
-                        <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="Password" minlength="7" maxlength="60" name="password"
-					 required/>
-                    </label>
-                    
-                    <a class="password" href="#">Esqueceu sua senha?</a>
-                    <button class="btn btn-second" type="submit">sign in</button>        
-                </form>
-            </div><!-- second column -->
+	<div id="login-container">
+        <h1>Login</h1>
+        <form action="">
+          <label for="email">E-mail</label>
+          <input type="email" name="email" id="email" placeholder="Digite seu e-email" autocomplete="off">
+          <label for="password">Senha</label>
+          <input type="password" name="password" id="password" placeholder="Digite sua senha">
+          <a href="#" id="forgot-pass">Esqueceu a senha?</a>
+          <input type="submit" value="Login">
+          </form>
+        <div id="social-container">
+          <p>Ou entre pelas suas redes sociais</p>
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-linkedin-in"></i>
+          <i class="fab fa-google-plus-g"></i>
         </div>
+        <div id="register-container">
+          <p>Ainda não tem uma conta?</p>
+          <a href="#">Registrar</a>
         </div>
+      </div>
 
 
 
 
 
-
-
-
-
-  
-<!-- 	  
-	<div class="background-banner">
-		<img class="banner" th:src="@{images/mercadoBlur.jpg}">
-	</div>
-
-	<div class="container-login">
-		<div class="form-group titulo-login">Entrar</div>
-		<form class="form-login" th:action="@{/login}" method="POST">
-			<div class="form-group">
-				<label>Login</label>
-				<input class="nome-login" minlength="7" maxlength="60"
-					name="username" type="text" required />
-			</div>
-			<div class="form-group">
-				<label>Senha:</label>
-				<input class="senha-login" minlength="7" maxlength="60" name="password"
-					type="password" required />
-			</div>
-			<div class="form-group">
-				<input id="remember-me" name="remember-me" type="checkbox" /> <label
-					class="label-lembrar" for="remember-me">Lembrar da senha?</label>
-			</div>
-			<div class="form-group btn-login">
-				<button class="btn btn-success" type="submit">Entrar</button>
-			</div>
-			<a th:href="@{/cadastro/usuario}">Não possui cadastro ?</a>
-		</form>
-	</div>
- -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script th:src="@{../jquery-3.5.1/jquery-3.5.1.js}"></script>
 	<script th:src="@{../bootstrap-4.5.3-dist/js/bootstrap.min.js}"></script>

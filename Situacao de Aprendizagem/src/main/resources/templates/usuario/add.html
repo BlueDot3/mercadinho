@@ -4,145 +4,51 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" th:href="@{../css/cadastro.css}">
+	<link rel="stylesheet" th:href="@{../css/Cadastro/usuario.css}">
 
 	<link rel="stylesheet" th:href="@{../fontawesome-free-5.15.1-web/css/all.min.css}">
 	<title>Login</title>
 </head>
 <body>
 
-	<div class="container">
-	<section class="image-responsive">
-		<img class="banner" th:src="@{../images/MercadoImagem.jpg}">
-	</section>
-        <div class="content first-content">
-            <div class="first-column">
-                <h2 class="title title-primary">Bem vindo de novo!</h2>
-                <p class="description description-primary">Já esta conectado?</p>
-                <p class="description description-primary">Por favor faça login!</p>
-                <button id="signin" class="btn btn-primary" th:onclick="|window.location.href='@{/login}'|">sign in</button>
-            </div>    
-            <div class="second-column">
-                <h2 class="title title-second">Crie sua Conta</h2>
-                <div class="social-media">
-                    <ul class="list-social-media">
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-facebook-f"></i>        
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-google-plus-g"></i>
-                            </li>
-                        </a>
-                        <a class="link-social-media" href="#">
-                            <li class="item-social-media">
-                                <i class="fab fa-linkedin-in"></i>
-                            </li>
-                        </a>
-                    </ul>
-                </div><!-- social media -->
-                <p class="description description-second">Ou use seu email para cadastrar:</p>
-                <form class="form"  th:action="@{/usuario/save}" th:object="${usuario}" method="POST">
-                   
-                    <div id = "msg-erro" class = "msg">
-                    <label>Senhas não são semelhantes</label>
-                	</div>       
-                <div id = "msg-sucesso" class = "msg">
-                    <label>As senhas correspondem</label>
-                </div>
-                    <label class="label-input" for="">
-                        <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="Nome" name="nome" th:field="*{nome}"  minlength="7" maxlength=60 required />
-                    </label>
-                    
-                    <label class="label-input" for="">
-                        <i class="far fa-envelope icon-modify"></i>
-                        <input  placeholder="Email" name="login" th:field="*{login}" type="text" minlength="7" maxlength=60 required />
-                    </label>
-                    
-                    <label class="label-input" for="">
-                        <i class="far fa-address-card icon-modify"></i>
-                        <input type="text" placeholder="Cpf" name="Cpf" th:field="*{cpf}"  minlength="11" maxlength=11 required />
-                    </label>
-                    
-                    <label class="label-input" for="">
-                        <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" id="senha1" placeholder="Senha" name="senha" th:field="*{senha}"  minlength="7" maxlength=60 required th:onblur="verificar()" />
-                    </label>
-                    <label class="label-input" for="">
-                        <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" id="senha2" placeholder="Confirmar Senha"    minlength="7" maxlength=60 required th:onblur="verificar()" />
-                    </label>
-                    
-                    
-                    <button class="btn btn-second">sign up</button>        
-                </form>
-            </div>
-        </div>
-        >
-        </div>
-    
-
-
-<!-- 
-	
-	<section class="image-responsive">
-		<img class="banner" th:src="@{../images/MercadoImagem.jpg}">
-	</section>
-	<div class="container-login">
-		<div class="form-group titulo-login">Cadastrar-se</div>
-		<form class="form-login" th:action="@{/cadastro/usuario/save}" th:object="${usuario}" method="POST">
-			<div class="form-group">
-				<label>Nome</label>
-				<input class="form-control" name="nome" th:field="*{nome}" type="text" minlength="7" maxlength=60 required />
-			</div>
-			
-			<div class="form-group">
-				<label>Login ou email</label>
-				<input class="form-control" name="login" th:field="*{login}" type="text" minlength="7" maxlength=60 required />
-			</div>
-			
-			<div class="form-group">
-				<label>Senha</label>
-				<input class="form-control" name="senha" th:field="*{senha}" type="password" minlength="7" maxlength=60  required />
-			</div>
-			
-			<div class="form-group btn-login">
-				<button class="btn btn-success" type="submit">Salvar</button>
-			</div>
+	<div id="main-container">
+		<h1>Cadastre-se para acessar o sistema</h1>
+		<form id="register-form" action="">
+		  <div class="full-box">
+			<label for="email">E-mail</label>
+			<input type="email" name="email" id="email" placeholder="Digite seu e-mail" data-min-length="2" data-email-validate>
+		  </div>
+		  <div class="half-box spacing">
+			  <label for="name">Nome</label>
+			  <input type="text" name="name" id="name" placeholder="Digite seu nome" data-required data-min-length="3" data-max-length="16">
+		  </div>
+		  <div class="half-box">
+			  <label for="lastname">Sobrenome</label>
+			  <input type="text" name="lastname" id="lastname" placeholder="Digite seu sobrenome" data-required data-only-letters>
+		  </div>
+		  <div class="half-box spacing">
+			<label for="lastname">Senha</label>
+			<input type="password" name="password" id="password" placeholder="Digite sua senha" data-password-validate data-required>
+		  </div>
+		  <div class="half-box">
+			<label for="passconfirmation">Confirmação de senha</label>
+			<input type="password" name="passconfirmation" id="passwordconfirmation" placeholder="Digite novamente sua senha" data-equal="password">
+		  </div>
+		  <div class="full-box">
+			<label for="cpf">Cpf</label>
+			<input type="text" name="cpf" id="cpf" placeholder="Digite seu cpf" data-min-length="2" data-cpf-validate>
+		  </div>
+		  <div>
+			<input type="checkbox" name="agreement" id="agreement">
+			<label for="agreement" id="agreement-label">Eu li e aceito os <a href="#">termos de uso</a></label>
+		  </div>
+		  <div class="full-box">
+			<input id="btn-submit" type="submit" value="Registrar">
+		  </div>
 		</form>
-	</div> -->
+	  </div>
+	  <p class="error-validation template"></p>
 
-	<!-- <div class="footer">
-		<div class="inner_footer">
-			<div class="logo_container">
-				<img th:src="@{/images/logoBranca.png}"/>
-			</div>
-			
-			<div class="footer_third">
-				<h1>Precisa de ajuda ?</h1>
-				<a href="#">Termos &amp; Condições</a> <a href="#">Políticas de privacidade</a>
-			</div>
-			
-			<div class="footer_third">
-				<h1>Mais</h1>
-				<a href="#">Termos &amp; Condições</a> <a href="#">Políticas de privacidade</a>
-			</div>
-			
-			<div class="footer_third">
-				<h1>Contato</h1>
-				<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-				<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-				<li><a href="#"><i class="fab fa-twitter"></i></a></li> 
-				<span>
-					Telefone : 3223-2332 <br> CEP: 12345-678<br>
-					Florianópolis, Santa Catarina <br>
-				</span>
-			</div>
-		</div>
-	</div> -->
 
 	<script th:src="@{../jquery-3.5.1/jquery-3.5.1.js}"></script>
 	<script th:src="@{../bootstrap-4.5.3-dist/js/bootstrap.min.js}"></script>
