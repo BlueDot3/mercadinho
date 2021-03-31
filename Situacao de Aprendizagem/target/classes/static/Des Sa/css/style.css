@@ -1,0 +1,38 @@
+/*NavBar*/
+
+nav {
+    background-color: #800000;
+}
+
+.dropdownn {
+    margin-right: 320px;
+}
+
+.button-navbar {
+    margin-left: 10px;
+}
+
+.header {
+    transition: 0.8s;
+}
+
+.logo {
+    filter: invert(10%);
+    transition: 0.6s;
+}
+
+.header.sticky {
+    padding: 15px 15px 15px 15px;
+    background: #000000;
+    transition: 0.8s;
+}
+
+.header.sticky .logo,
+.nav-item.sticky ul li a {
+    filter: invert(100%);
+    transition: 0.6s;
+}
+
+header.sticky img {
+    transition: 0.6s;
+}
