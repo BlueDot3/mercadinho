@@ -1,7 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica;
+  
+  border: none;
+}
 
 body {
-    background-image: url('../img/background.jpg');
-    background-size: cover;
+   background-color: #000;
     
   }
   
@@ -11,6 +18,7 @@ body {
   
   a {
     font-size: .8rem;
+    color: black;
   }
   
   a:hover {
@@ -54,7 +62,7 @@ body {
   }
   
   input:focus {
-    border-bottom: 2px solid #08558B;
+    border-bottom: 2px solid #800000;
   }
   
   #forgot-pass {
@@ -64,19 +72,21 @@ body {
   
   input[type="submit"] {
     text-align: center;
-    text-transform: uppercase;
+    
     border: none;
     height: 40px;
     border-radius: 20px;
     margin-top: 30px;
     cursor: pointer;
     color: #FFF;
-    background-color: #08558B;
-    font-weight: bold;
+    background-color: #800000;
+    trasition:0.5s;
+    
   }
   
   input[type="submit"]:hover {
-    background-color: #1B223C;
+    trasition:0.5s;
+    background-color: #000;
     transition: .5s;
   }
   
@@ -110,7 +120,7 @@ body {
   }
   
   .fa-google-plus-g{
-    background-color: crimson;
+    background-color: #CC0000;
     color: #fff;
   }
   
@@ -140,8 +150,8 @@ body {
   
   .fa-google-plus-g:hover
   {
-    color: crimson;
+    color: #CC0000;
     
     background-color: #FFF;
-    border: 1px  crimson solid;
+    border: 1px  #CC0000 solid;
   }
