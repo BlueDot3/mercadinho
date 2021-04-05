@@ -1,10 +1,15 @@
 package br.com.projetoSA.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.projetoSA.model.Permissao;
 import br.com.projetoSA.model.Usuario;
+import br.com.projetoSA.repository.PermissaoRepository;
 import br.com.projetoSA.repository.UsuarioRepository;
 
 @Service
@@ -12,6 +17,9 @@ public class UsuarioServiceImpl implements UsuarioService{
     
     @Autowired
     UsuarioRepository usuarioRepository;
+
+	@Autowired
+	PermissaoRepository permissaoRepository;
 
 	// Save usuário
 
@@ -22,6 +30,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 			usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 			
+			List<Permissao> permissoes = permissaoRepository.findByNome("cliente");
+
+			usuario.setPermissoes(permissoes);
+
 			usuarioRepository.save(usuario);
 			
 			return "redirect:/login";
