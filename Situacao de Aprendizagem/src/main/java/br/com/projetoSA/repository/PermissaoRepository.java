@@ -14,5 +14,7 @@ public interface PermissaoRepository extends JpaRepository<Permissao, Long> {
 	public Permissao findByIdIsNull();
 
 	public List<Permissao> findByNomeLike(String nome);
+
+	List<Permissao> findByNome(String nome);
 	
 }
