@@ -1,2 +1,2 @@
 # Mercadinho
-Repositório do grupo **BlueDot**, relacionado à Situação de Aprendizagem do SENAI Florianópolis.
+Repositório do grupo **BlueDevs**, relacionado à Situação de Aprendizagem do SENAI Florianópolis.
