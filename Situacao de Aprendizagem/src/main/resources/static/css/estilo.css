@@ -1,0 +1,116 @@
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+nav.nav-transparente{
+	padding: 15px 0;
+	background: rgb(0,0,0,0.6);
+}
+.navbar-light .navbar-nav .nav-link{
+	color: white
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+	color: blue
+}
+#botao-hamburguer{
+	 color: rgba(255,255,255,255);
+    border-color: rgba(255,255,255,255);
+}
+ #link-branco{
+    color: rgba(255,255,255,255);
+}
+#nav-principal{
+	color:white;
+}
+#nav-principal a:hover{
+	color: red;
+}
+#container-fluid-confi{
+	    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    margin-top: 58px;
+
+}
+#meu{
+	background: black;
+	color:white;
+
+}
+.esp-cards{
+	margin-top: 65px;
+}
+
+.estilo-container{
+	padding: 40px;
+	margin-top: 70px;
+	border-top: 1px solid #C0C0C0;
+	border-bottom: 1px solid #C0C0C0;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 20px;
+}
+.estilo-container h4 ,h3{
+text-transform: uppercase;
+font-weight: bold;
+font-size: 24px;
+
+}
+
+.container-rodape{
+	margin-top: 40px;
+	padding: 20px;
+	background:  black;
+}
+.redes-sociais i{
+	
+	margin: 0 10px 0 10px;
+	color: white;
+}
+
+ .container-rodape-principal{
+	width: 100%;
+	height: auto;
+	
+}
+.d-inline{
+	text-decoration: none;
+}
+.branco{
+	color: white;
+}
+
+.branco:hover{
+	color: red;
+}
+.wrapper{
+	padding-top: 70px;
+}
+.card-img-top{
+	box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+.card-body{
+	text-align: center;
+	box-shadow: 0px 15px 15px -8px rgba(0,0,0,0.5);
+}
+
+.card-body h6 {
+font-size: 14px;
+text-transform: uppercase;
+color: deeppink;
+}
+.card-title {
+text-transform: uppercase;
+font-weight: bold;
+font-size: 24px;
+}
+
+@media (max-width: 800px){
+    .mx-30{
+        margin-bottom: 30px;
+    }
+}
