@@ -24,9 +24,6 @@ public class Permissao {
 
 	@ManyToMany(mappedBy = "permissoes")
 	private List<Usuario> usuarios;
-	
-	@ManyToMany(mappedBy = "permissoes")
-	private List<Mercado> mercado;
 
 	public List<Usuario> getUsuarios() {
 		return usuarios;

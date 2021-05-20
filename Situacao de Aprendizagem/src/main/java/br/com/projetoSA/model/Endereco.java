@@ -29,7 +29,7 @@ public class Endereco  {
 	private String complemento;
 	
 	@OneToOne(mappedBy = "endereco")
-    private Mercado mercado;
+    private Usuario usuario;
 
 	public Long getId() {
 		return id;

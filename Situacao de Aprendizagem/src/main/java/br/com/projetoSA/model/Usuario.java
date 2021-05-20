@@ -2,6 +2,7 @@ package br.com.projetoSA.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.NonNull;
@@ -32,14 +34,25 @@ public class Usuario {
 	@Size(max = 120)
 	private String senha;
 	
-  	@NonNull
+	@NonNull
+	private boolean contaMercado;
+
+	@NonNull
 	@Size(max = 14)
+	private String cnpj;
+
+  	@NonNull
+	@Size(max = 11)
 	private String cpf;
 
 	@ManyToMany
 	@JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "permissao_id"))
 	
 	private List<Permissao> permissoes;
+
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
+    private Endereco endereco;
 
 	@Override
 	public int hashCode() {
@@ -77,6 +90,30 @@ public class Usuario {
 		} else if (!permissoes.equals(other.permissoes))
 			return false;
 		return senha.equals(other.senha);
+	}
+
+	public boolean isContaMercado() {
+		return contaMercado;
+	}
+
+	public void setContaMercado(boolean contaMercado) {
+		this.contaMercado = contaMercado;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	public Long getId() {
