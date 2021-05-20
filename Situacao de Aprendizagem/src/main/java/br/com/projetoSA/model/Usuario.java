@@ -92,7 +92,7 @@ public class Usuario {
 		return senha.equals(other.senha);
 	}
 
-	public boolean isContaMercado() {
+	public boolean getContaMercado() {
 		return contaMercado;
 	}
 

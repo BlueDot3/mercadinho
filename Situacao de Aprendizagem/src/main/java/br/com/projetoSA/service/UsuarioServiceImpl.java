@@ -26,13 +26,22 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public String saveUsuario(Usuario usuario) {
 
-        if (usuarioRepository.findByLogin(usuario.getLogin()) == null && usuarioRepository.findByCpf(usuario.getCpf()) == null) {
+        if (usuarioRepository.findByLogin(usuario.getLogin()) == null && usuarioRepository.findByCpf(usuario.getCpf()) == null && usuarioRepository.findByCnpj(usuario.getCnpj()) == null) {
 
 			usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
 			
-			List<Permissao> permissoes = permissaoRepository.findByNome("cliente");
+			if(usuario.getContaMercado()) {
 
-			usuario.setPermissoes(permissoes);
+				List<Permissao> permissoes = permissaoRepository.findByNome("mercado");
+
+				usuario.setPermissoes(permissoes);
+
+			} else {
+
+				List<Permissao> permissoes = permissaoRepository.findByNome("cliente");
+
+				usuario.setPermissoes(permissoes);
+			}
 
 			usuarioRepository.save(usuario);
 			
