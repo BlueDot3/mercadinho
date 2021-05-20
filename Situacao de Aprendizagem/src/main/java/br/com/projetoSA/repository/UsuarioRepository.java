@@ -7,8 +7,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 	Usuario findByLogin(String login);
 
-  Usuario deleteByLogin(String login);
+	Usuario deleteByLogin(String login);
 
-  Usuario findByCpf(String cpf);
+	Usuario findByCpf(String cpf);
 
 }

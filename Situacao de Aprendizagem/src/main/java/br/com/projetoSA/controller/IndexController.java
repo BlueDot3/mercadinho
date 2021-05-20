@@ -14,4 +14,12 @@ public class IndexController {
 	public String getLogin() {
 		return "login";
 	}
+	
+	@GetMapping("/mercado/index")
+	public String mercadoIndex() {
+
+		return "mercado/index";
+	}
+	
+	
 }

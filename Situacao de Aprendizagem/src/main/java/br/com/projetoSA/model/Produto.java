@@ -20,10 +20,6 @@ public class Produto{
 	private String nome;
 	
 	@NonNull
-	@Column(name="mercadoNome")
-	private String mercadoNome;
-	
-	@NonNull
 	@Column(name="preco")
 	private float preco;
 	
@@ -32,42 +28,7 @@ public class Produto{
 	private String tipo;
 	
 	
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + mercadoNome.hashCode();
-		result = prime * result + nome.hashCode();
-		result = prime * result + Float.floatToIntBits(preco);
-		result = prime * result + tipo.hashCode();
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Produto other = (Produto) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (!mercadoNome.equals(other.mercadoNome))
-			return false;
-		if (!nome.equals(other.nome))
-			return false;
-		if (Float.floatToIntBits(preco) != Float.floatToIntBits(other.preco))
-			return false;
-		return tipo.equals(other.tipo);
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -82,14 +43,6 @@ public class Produto{
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getMercadoNome() {
-		return mercadoNome;
-	}
-
-	public void setMercadoNome(String mercadoNome) {
-		this.mercadoNome = mercadoNome;
 	}
 
 	public float getPreco() {
@@ -110,7 +63,7 @@ public class Produto{
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + ", mercadoNome=" + mercadoNome + ", preco=" + preco + ", tipo="
+		return "Produto [id=" + id + ", nome=" + nome + ", mercadoNome="  + ", preco=" + preco + ", tipo="
 				+ tipo + "]";
 	}
 	

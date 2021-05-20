@@ -62,7 +62,7 @@ body {
   }
   
   input:focus {
-    border-bottom: 2px solid #800000;
+    border-bottom: 2px solid red;
   }
   
   #forgot-pass {
@@ -70,22 +70,22 @@ body {
     text-align: right;
   }
   
-  input[type="submit"] {
+  button[type="submit"] {
     text-align: center;
-    
+    width: 200px;
     border: none;
     height: 40px;
     border-radius: 20px;
     margin-top: 30px;
     cursor: pointer;
     color: #FFF;
-    background-color: #800000;
-    trasition:0.5s;
+    background-color:red;
+    transition:0.5s;
     
   }
   
-  input[type="submit"]:hover {
-    trasition:0.5s;
+  button[type="submit"]:hover {
+    transition:0.5s;
     background-color: #000;
     transition: .5s;
   }
@@ -124,11 +124,7 @@ body {
     color: #fff;
   }
   
-  /* registrar */
-  #register-container p {
-    margin-bottom: 10px;
-    text-decoration: none;
-  }
+
   
   
   .fa-facebook-f:hover
