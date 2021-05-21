@@ -1,12 +1,9 @@
 package br.com.projetoSA.service;
 
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import br.com.projetoSA.model.Permissao;
 import br.com.projetoSA.model.Usuario;
 import br.com.projetoSA.repository.PermissaoRepository;
@@ -26,23 +23,23 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public String saveUsuario(Usuario usuario) {
 
-        if (usuarioRepository.findByLogin(usuario.getLogin()) == null && usuarioRepository.findByCpf(usuario.getCpf()) == null && usuarioRepository.findByCnpj(usuario.getCnpj()) == null) {
+        if(usuarioRepository.findByLogin(usuario.getLogin()) == null && usuarioRepository.findByCpf(usuario.getCpf()) == null && usuarioRepository.findByCnpj(usuario.getCnpj()) == null) {
 
-			usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-			
-			if(usuario.getContaMercado()) {
+			if(usuario.getCpf() == null) {
+				
+				List<Permissao> permissaos = permissaoRepository.findByNome("mercado");
 
-				List<Permissao> permissoes = permissaoRepository.findByNome("mercado");
-
-				usuario.setPermissoes(permissoes);
+				usuario.setPermissoes(permissaos);
 
 			} else {
 
-				List<Permissao> permissoes = permissaoRepository.findByNome("cliente");
+				List<Permissao> permissao = permissaoRepository.findByNome("cliente");
 
-				usuario.setPermissoes(permissoes);
+				usuario.setPermissoes(permissao);
 			}
 
+			usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+			
 			usuarioRepository.save(usuario);
 			
 			return "redirect:/login";
