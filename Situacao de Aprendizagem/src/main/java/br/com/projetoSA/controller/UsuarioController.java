@@ -1,6 +1,5 @@
 package br.com.projetoSA.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
@@ -41,11 +40,26 @@ public class UsuarioController {
 		model.addAttribute("usuario", new Usuario());
 		return "usuario/add";
 	}
+	
+	@GetMapping("/mercado/add")
+	public String addMercado(Model model) {
 
+		model.addAttribute("usuario", new Usuario());
+		return "mercado/add";
+	}
 	@PostMapping("/usuario/save")
 	public String saveAddUsuario(Usuario usuario) {
 
-		return usuarioService.saveUsuario(usuario);	
+		usuarioService.saveUsuario(usuario);
+		
+		return "/login" ;	
+	}
+	@PostMapping("/mercado/save")
+	public String saveAddMercado(Usuario usuario) {
+
+		usuarioService.saveUsuario(usuario);
+		
+		return "/login" ;	
 	}
 
 	// Editar usuário

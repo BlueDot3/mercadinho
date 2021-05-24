@@ -30,6 +30,10 @@ public class ProjetoDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
 		Usuario usuario = usuarioRepository.findByLogin(login);
+		
+		
+				
+		
 		if (usuario == null) {
 			throw new UsernameNotFoundException("Usuário não encontrado");
 		}

@@ -71,7 +71,11 @@
       </div>
     </div>
   </div> 
-    
+    <form th:action="@{/logout}" class="navbar-form" method="POST">
+					<button class="btn btn-dark" type="submit">
+						<i class="fas fa-sign-out-alt"></i> Sair
+					</button>
+				</form>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script th:src="@{../jquery-3.5.1/jquery-3.5.1.js}"></script>
 	<script th:src="@{../bootstrap-4.5.3-dist/js/bootstrap.min.js}"></script>
