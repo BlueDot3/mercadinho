@@ -50,7 +50,7 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 
 				// Definir página de login
 
-				//.formLogin().loginPage("/login").defaultSuccessUrl("/", true).permitAll().and()
+				.formLogin().loginPage("/login").defaultSuccessUrl("/", true).permitAll().and()
 
 				// Relembrar usuário logado
 
