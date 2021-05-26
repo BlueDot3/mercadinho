@@ -28,8 +28,6 @@ public class Endereco  {
 	@Column(name="complemento")
 	private String complemento;
 	
-	@OneToOne(mappedBy = "endereco")
-    private Usuario usuario;
 
 	public Long getId() {
 		return id;

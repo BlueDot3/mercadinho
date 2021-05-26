@@ -1,5 +1,6 @@
 package br.com.projetoSA.model;
 
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,10 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.NonNull;
+
 
 @Entity(name="usuario")
 public class Usuario {
@@ -39,15 +42,15 @@ public class Usuario {
 
 	@Size(max = 11)
 	private String cpf;
+	
+	@ManyToMany(mappedBy="usuarios")
+    private List<Pedido> pedido;
 
 	@ManyToMany
-	@JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "permissao_id"))
-	
+	@JoinTable(name = "usuario_permissao", 
+	   joinColumns = @JoinColumn(name = "usuario_id"), 
+	   inverseJoinColumns = @JoinColumn(name = "permissao_id"))
 	private List<Permissao> permissoes;
-
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
-    private Endereco endereco;
 
 	public String getCnpj() {
 		return cnpj;
@@ -57,13 +60,7 @@ public class Usuario {
 		this.cnpj = cnpj;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -111,6 +108,14 @@ public class Usuario {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public List<Pedido> getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
 	}
 
 	@Override
