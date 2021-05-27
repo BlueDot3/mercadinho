@@ -23,7 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public String saveUsuario(Usuario usuario) {
 
-        if(usuarioRepository.findByLogin(usuario.getLogin()) == null && usuarioRepository.findByCpf(usuario.getCpf()) == null && usuarioRepository.findByCnpj(usuario.getCnpj()) == null) {
+        if(usuarioRepository.findByLogin(usuario.getLogin()) == null && usuarioRepository.findByCpf(usuario.getCpf()) == null ) {
 
 			if(usuario.getCpf() == null) {
 				
