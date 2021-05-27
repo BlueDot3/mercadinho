@@ -3,7 +3,7 @@ package br.com.projetoSA.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.springframework.lang.NonNull;
@@ -27,21 +25,38 @@ public class Usuario {
 
 	@NonNull
 	@Size(max = 120)
+	@Column(name="nome")
 	private String nome;
 
 	@NonNull
 	@Size(max = 120)
+	@Column(name="login")
 	private String login;
 
 	@NonNull
 	@Size(max = 120)
+	@Column(name="senha")
 	private String senha;
 
-	@Size(max = 14)
-	private String cnpj;
-
 	@Size(max = 11)
+	@Column(name="cpf")
 	private String cpf;
+	
+	@Size(max = 11)
+	@Column(name="rua")
+	private String rua;
+	
+	@Size(max = 11)
+	@Column(name="bairro")
+	private String bairro;
+	
+	@Size(max = 11)
+	@Column(name="numero")
+	private int numero;
+	
+	@Size(max = 11)
+	@Column(name="complemento")
+	private String complemento;
 	
 	@ManyToMany(mappedBy="usuarios")
     private List<Pedido> pedido;
@@ -51,16 +66,38 @@ public class Usuario {
 	   joinColumns = @JoinColumn(name = "usuario_id"), 
 	   inverseJoinColumns = @JoinColumn(name = "permissao_id"))
 	private List<Permissao> permissoes;
-
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-
 	
+	public String getRua() {
+		return rua;
+	}
+
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
 
 	public Long getId() {
 		return id;
@@ -118,9 +155,7 @@ public class Usuario {
 		this.pedido = pedido;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha +", cpf="+ cpf + "]";
-	}
+	
+	
 
 }

@@ -1,8 +1,10 @@
 package br.com.projetoSA.model;
 
+
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,9 +27,11 @@ public class Pedido {
 
 	    @Size(max=80)
 	    @NotNull
+	    @Column(name="descricao")
 	    private String descricao;
 
 	    @NotNull
+	    @Column(name="data")
 	    private Date dataPedido;
 	    
 	    @ManyToMany
@@ -35,6 +39,12 @@ public class Pedido {
 	    	joinColumns = @JoinColumn(name="pedido_id"),
 	    	inverseJoinColumns = @JoinColumn(name="usuario_id"))
 	    private List<Usuario> usuarios;
+
+	    @ManyToMany
+	    @JoinTable(name = "pedido_produto",
+	    	joinColumns = @JoinColumn(name="pedido_id"),
+	    	inverseJoinColumns = @JoinColumn(name="produto_id"))
+	    private List<Produto> produtos;
 	    
 		public List<Usuario> getUsuarios() {
 			return usuarios;
@@ -43,6 +53,7 @@ public class Pedido {
 		public void setUsuarios(List<Usuario> usuarios) {
 			this.usuarios = usuarios;
 		}
+		
 
 		public Long getId() {
 			return id;

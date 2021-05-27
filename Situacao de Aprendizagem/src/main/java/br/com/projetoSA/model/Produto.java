@@ -1,10 +1,13 @@
 package br.com.projetoSA.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.springframework.lang.NonNull;
@@ -27,6 +30,9 @@ public class Produto{
 	@NonNull
 	@Column(name="tipo")
 	private String tipo;
+	
+	@ManyToMany(mappedBy="produtos")
+    private List<Pedido> pedido;
 	
 	
 	
