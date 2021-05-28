@@ -15,11 +15,7 @@ public class IndexController {
 		return "login";
 	}
 	
-	@GetMapping("/mercado/index")
-	public String mercadoIndex() {
-
-		return "mercado/index";
-	}
+	
 	
 	
 }
