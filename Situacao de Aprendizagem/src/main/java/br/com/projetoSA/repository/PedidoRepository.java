@@ -9,7 +9,7 @@ import br.com.projetoSA.model.Pedido;
 
 
 @Repository
-public interface pedidoRepository extends JpaRepository<Pedido, Long> {
+public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
 	List<Pedido> findAll();
 

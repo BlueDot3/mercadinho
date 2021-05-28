@@ -2,17 +2,22 @@ package br.com.projetoSA.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import br.com.projetoSA.model.Pedido;
-import br.com.projetoSA.repository.pedidoRepository;
+import br.com.projetoSA.repository.PedidoRepository;
 
-public class pedidoServiceImpl implements pedidoService{
+public class PedidoServiceImpl implements PedidoService{
 
-	pedidoRepository pedidoRepository;
+	@Autowired
+	PedidoRepository pedidoRepository;
 
 	@Override
-	public List<Pedido> findAll() {
-		// TODO Auto-generated method stub
-		return pedidoRepository.findAll();
+	public String viewPedidoById(Long id) {
+
+		pedidoRepository.findById(id);
+
+		return "/pedido/view";
 	}
 
 	@Override
@@ -48,8 +53,4 @@ public class pedidoServiceImpl implements pedidoService{
 				return "redirect:/pedido/edit";
 	        }
 	}
-	
-	
-	
-	
 }
