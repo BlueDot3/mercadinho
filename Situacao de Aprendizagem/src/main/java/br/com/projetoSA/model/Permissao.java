@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.lang.NonNull;
 
+
 @Entity(name = "permissao")
 public class Permissao {
 
@@ -53,5 +54,7 @@ public class Permissao {
 	public String toString() {
 		return "Permissao [id=" + id + ", nome=" + nome + "]";
 	}
+
+	
 
 }

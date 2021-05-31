@@ -36,7 +36,9 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/usuario/save").permitAll()
 				.antMatchers("/mercado/**").hasRole("admin")
 				.antMatchers("/produto/list").hasAnyRole("usuario","admin")
-				.antMatchers("/usuario/edit").hasRole("admin")
+				.antMatchers("/usuario/edit").hasAnyRole("usuario","admin")
+				.antMatchers("/pedido/list").hasRole("admin")
+				.antMatchers("/usuario/list").hasRole("admin")
 				
 
 				// Habilitar statics
