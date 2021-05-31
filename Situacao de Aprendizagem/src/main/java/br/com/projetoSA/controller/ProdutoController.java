@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import br.com.projetoSA.model.Produto;
+import br.com.projetoSA.model.Usuario;
 import br.com.projetoSA.repository.ProdutoRepository;
 import br.com.projetoSA.service.ProdutoService;
 
@@ -43,15 +44,16 @@ public class ProdutoController {
 	// Adicionar produto
 
 	@GetMapping("/produto/add")
-	public String addProduto() {
-		
+	public String addProduto(Model model) {
+		model.addAttribute("produto", new Produto());
 		return "produto/add";
 	}
 
 	@PostMapping("/produto/save")
 	public String saveProduto(Produto produto) {
 
-		return produtoService.saveProduto(produto);
+		produtoService.saveProduto(produto);
+		return "produto/list"; 
 	}
 
 	// Editar produto
