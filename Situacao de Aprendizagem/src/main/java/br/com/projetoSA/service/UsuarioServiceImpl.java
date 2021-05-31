@@ -1,7 +1,11 @@
 package br.com.projetoSA.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import br.com.projetoSA.model.Permissao;
@@ -27,13 +31,13 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 			if(usuario.getCpf() == null) {
 				
-				List<Permissao> permissaos = permissaoRepository.findByNome("mercado");
+				List<Permissao> permissaos = permissaoRepository.findByNome("admin");
 
 				usuario.setPermissoes(permissaos);
 
 			} else {
 
-				List<Permissao> permissao = permissaoRepository.findByNome("cliente");
+				List<Permissao> permissao = permissaoRepository.findByNome("usuario");
 
 				usuario.setPermissoes(permissao);
 			}
@@ -91,4 +95,6 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 		}
     }
+    
+    
 }

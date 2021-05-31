@@ -40,22 +40,9 @@ public class UsuarioController {
 		model.addAttribute("usuario", new Usuario());
 		return "usuario/add";
 	}
-	
-	@GetMapping("/mercado/add")
-	public String addMercado(Model model) {
 
-		model.addAttribute("usuario", new Usuario());
-		return "mercado/add";
-	}
 	@PostMapping("/usuario/save")
 	public String saveAddUsuario(Usuario usuario) {
-
-		usuarioService.saveUsuario(usuario);
-		
-		return "/login" ;	
-	}
-	@PostMapping("/mercado/save")
-	public String saveAddMercado(Usuario usuario) {
 
 		usuarioService.saveUsuario(usuario);
 		

@@ -10,55 +10,64 @@
 </head>
 <body>
 
-	<div id="main-container">
-    <h1>Cadastre-se para acessar o sistema</h1>
-    <div id="social-container">
-      <p>Cadastre-se pelas suas redes sociais</p>
-      <i class="fab fa-facebook-f"></i>
-      <i class="fab fa-linkedin-in"></i>
-      <i class="fab fa-google-plus-g"></i>
-    </div>
-    <form id="register-form" th:action="@{/usuario/save}" th:object="${usuario}" method="POST">
-      <div class="full-box">
-        <label >E-mail</label>
-        <input  name="email" id="email" placeholder="Digite seu e-mail" data-min-length="2" th:field="*{login}" required>
-      </div>
-      <div class="full-box ">
-          <label >Nome</label>
-          <input type="text" name="name" id="name" placeholder="Digite seu nome" required th:field="*{nome}">
-      </div>
- 
-      <div class="half-box spacing">
-        <label >Senha</label>
-        <input type="password" name="password" id="password" placeholder="Digite sua senha" required th:field="*{senha}">
-      </div>
-      <div class="half-box">
-        <label >Confirmação de senha</label>
-        <input type="password" name="passconfirmation" id="passwordconfirmation" placeholder="Digite novamente sua senha" required>
-      </div>
-      <div class="full-box">
-        <label >Cpf</label>
-        <input type="text" name="cpf" id="cpf" placeholder="Digite seu cpf" required th:field="*{cpf}">
-      </div>
-      <div>
-        <input type="checkbox" name="agreement" id="agreement">
-        <label for="agreement" id="agreement-label" required>Eu li e aceito os </label>
-      </div>
-      <div>
-        <h5 >Ja tem uma conta?<h5/>
-        <a th:href="@{/login}" id="login-container">Login</a>
-      </div>
-      <div class="full-box">
-        <button id="btn-submit" type="submit">
-          Registrar
-          <!-- <input id="btn-submit" type="submit"> -->
-        </button>
-      </div>
-    </form>
-  </div>
+	<div class="container">
+        <div class="content first-content">
+            <div class="first-column">
+                <h2 class="title title-primary">Bem vindo de novo!</h2>
+                <p class="description description-primary">Já esta conectado?</p>
+                <p class="description description-primary">Por favor faça login!</p>
+                <button id="signin" class="btn btn-primary" th:onclick="|window.location.href='@{/login}'|">sign in</button>
+            </div>    
+            <div class="second-column">
+                <h2 class="title title-second">Crie sua Conta</h2>
+                
+                <p class="description description-second">Ou use seu email para cadastrar:</p>
+                <form class="form"  th:action="@{/usuario/save}" th:object="${usuario}" method="POST">
+                   
+                    <label class="label-input" for="">
+                        <i class="far fa-user icon-modify"></i>
+                        <input type="text" placeholder="Nome" name="nome" th:field="*{nome}"  minlength="7" maxlength=60 required />
+                    </label>
+                    
+                    <label class="label-input" for="">
+                        <i class="far fa-envelope icon-modify"></i>
+                        <input  placeholder="Email" name="login" th:field="*{login}" type="text" minlength="7" maxlength=60 required />
+                    </label>
+                    
+                    <label class="label-input" for="">
+                        <i class="far fa-address-card icon-modify"></i>
+                        <input type="text" placeholder="Cpf" name="Cpf" th:field="*{cpf}"  minlength="11" maxlength=11 required />
+                    </label>
+                    
+                    <label class="label-input" for="">
+                        <i class="fas fa-lock icon-modify"></i>
+                        <input type="password" id="senha1" placeholder="Senha" name="senha" th:field="*{senha}"  minlength="4" maxlength=60 required  />
+                    </label>
+                    <label class="label-input" for="">
+                       <i class="fas fa-clipboard-list icon-modify"></i>
+                        <input type="text" placeholder="Rua"  name="rua" th:field="*{rua}" minlength="4" maxlength=60 required  />
+                    </label>
+                    <label class="label-input" for="">
+                        <i class="fas fa-clipboard-list icon-modify"></i>
+                        <input  placeholder="Numero" name="numero" th:field="*{numero}" type="number" minlength="1" maxlength=10 required />
+                    </label>
+                    <label class="label-input" for="">
+                        <i class="fas fa-clipboard-list icon-modify"></i>
+                        <input  placeholder="Complemento" name="complemento" th:field="*{complemento}" type="text" minlength="3" maxlength=10 required />
+                    </label>
+          
+                    <button class="btn btn-second" type="submit">sign up</button>        
+                </form>
+            </div>
+        </div>
+        
+        </div>
+      
+     
+  
  
 
-	<script th:src="@{../js/script.js}"></script>
+	<script th:src="@{/js/script.js}"></script>
 	
 	
 	

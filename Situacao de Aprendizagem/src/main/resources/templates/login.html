@@ -13,25 +13,24 @@
 	<div id="login-container">
     <div class="logo"><h1><span style="color: black; size: 50px;">Rapi</span><span style="color:red">Food</span></h1></div>
     <form th:action="@{/login}" method="POST">
-      <label for="email" >E-mail</label>
-      <input  name="username" id="email" placeholder="Digite seu e-email" autocomplete="off">
-      <label for="password" >Senha</label>
-      <input type="password" name="password" id="password" placeholder="Digite sua senha">
+    <label class="label-input" for="">
+     <i class="far fa-user icon-modify"></i>
+     <input  name="username" id="email" placeholder="Digite seu e-email" autocomplete="off" required>
+     </label>                 
+     <label class="label-input" for="">
+     <i class="far fa-envelope icon-modify"></i>
+     <input type="password" name="password" id="password" placeholder="Digite sua senha" required>
+      </label>
+   
       <a href="#" id="forgot-pass">Esqueceu a senha?</a>
       <button type="submit">
         Entrar
         <!-- <input type="submit" value="Login"> -->
       </button>
       </form>
-    <p style="padding: 5px 5px 5px 5px;">Ou entre pelas suas redes sociais</p>
-    <div id="social-container">
-      
-      <i class="fab fa-facebook-f"></i>
-      <i class="fab fa-linkedin-in"></i>
-      <i class="fab fa-google-plus-g"></i>
-    </div>
+    
     <div id="register-container">
-      <p>Ainda não tem uma conta?</p>
+      <p >Ainda não tem uma conta?</p>
       <a th:href="@{/usuario/add}">Registrar</a>
     </div>
   </div>
@@ -41,9 +40,8 @@
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script th:src="@{../jquery-3.5.1/jquery-3.5.1.js}"></script>
-	<script th:src="@{../bootstrap-4.5.3-dist/js/bootstrap.min.js}"></script>
-	<script th:src="@{../js/main.js}"></script>
+	<script th:src="@{/jquery-3.5.1/jquery-3.5.1.js}"></script>
+	<script th:src="@{/bootstrap-4.5.2/js/bootstrap.min.js}"></script>
 	
     
 </body>

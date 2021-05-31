@@ -47,10 +47,6 @@ public class Usuario {
 	private String rua;
 	
 	@Size(max = 11)
-	@Column(name="bairro")
-	private String bairro;
-	
-	@Size(max = 11)
 	@Column(name="numero")
 	private int numero;
 	
@@ -73,14 +69,6 @@ public class Usuario {
 
 	public void setRua(String rua) {
 		this.rua = rua;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
 	}
 
 	public int getNumero() {
