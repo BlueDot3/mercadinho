@@ -34,9 +34,9 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login").permitAll()
 				.antMatchers("/usuario/add").permitAll()
 				.antMatchers("/usuario/save").permitAll()
-				.antMatchers("/mercado/**").hasAnyRole("admin")
-				.antMatchers("/produto/**").hasAnyRole("usuario")
-				.antMatchers("/usuario/edit").hasAnyRole("usuario")
+				.antMatchers("/mercado/**").hasRole("admin")
+				.antMatchers("/produto/list").hasAnyRole("usuario","admin")
+				.antMatchers("/usuario/edit").hasRole("admin")
 				
 
 				// Habilitar statics
@@ -53,10 +53,11 @@ public class SecurityWebConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated().and()
 
 				// Definir página de login
-
+				
 				.formLogin().loginPage("/login").defaultSuccessUrl("/produto/list", true).permitAll().and()
-				.exceptionHandling()
-				  .accessDeniedPage("/mercado/add").and()
+				
+				.logout().permitAll().and()
+				 
 				
 
 				// Relembrar usuário logado

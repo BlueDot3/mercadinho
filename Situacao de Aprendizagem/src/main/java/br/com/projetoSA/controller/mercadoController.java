@@ -11,5 +11,10 @@ public class mercadoController {
 		return "mercado/add";
 	}
 	
+	@GetMapping("/mercado/list")
+	public String listProduto() {
+		return "mercado/list";
+	}
+	
 	
 }
