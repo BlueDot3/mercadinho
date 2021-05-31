@@ -38,7 +38,7 @@ button,input{
 .content::before {
     content: "";
     position: absolute;
-    background-color: #800000;
+    background-color: red;
     width: 40%;
     height: 100%;
     border-top-left-radius: 15px;
@@ -56,7 +56,7 @@ button,input{
     color: #fff;
 }
 .title-second {
-    color: #800000;
+    color: red;
 }
 .description {
     font-size: 14px;
@@ -89,17 +89,17 @@ button,input{
 }
 .btn-primary:hover {
     background-color: #fff;
-    color: #800000;
+    color: red;
 }
 .btn-second {
-    background-color: #800000;
-    border: 1px solid #800000;
+    background-color: red;
+    border: 1px solid red;
     transition: background-color .5s;
 }
 .btn-second:hover {
     background-color: #fff;
-    border: 1px solid #800000;
-    color: #800000;
+    border: 1px solid red;
+    color: red;
 }
 .first-content {
     display: flex;
