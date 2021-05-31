@@ -10882,3 +10882,16 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 	margin-left: 20px;
 	
 	}
+	
+.btn-add{
+	margin-top: 20px;
+	margin-left: 25%;
+	border-radius: 10px;
+	width:50%;
+	height: 10%;
+	}
+	.btn-add:hover{
+	background-color: white;
+	border: 2px solid black;
+	color:black;
+	}

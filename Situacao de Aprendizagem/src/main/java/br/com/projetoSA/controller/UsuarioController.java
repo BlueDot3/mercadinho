@@ -1,6 +1,7 @@
 package br.com.projetoSA.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,13 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@GetMapping("/usuario/list")
+	public String listUsuarios(Model model) {
+		
+		model.addAttribute("usuarios", usuarioRepository.findAll());	
+		return "usuario/list";
+	}
 
 	// Visualizar usuário
 
@@ -46,7 +54,7 @@ public class UsuarioController {
 
 		usuarioService.saveUsuario(usuario);
 		
-		return "/login" ;	
+		return "redirect:/usuario/list" ;	
 	}
 
 	// Editar usuário

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link rel="stylesheet" th:href="@{../css/style.css}">
+    
     <link rel="stylesheet" th:href="@{../fontawesome-free-5.15.1-web/css/all.min.css}">
     
 </head>
@@ -54,11 +55,11 @@
             <!-- Page content-->
             <div class="container container-funcionarios">
         <div class="form-titulo">
-            <h4>Funcionários</h4>
+            <h4>Produtos</h4>
         </div>
 
-        <div class="form-novo">
-            <a th:href="@{/funcionario/add}"
+        <div class="form-novo" sec:authorize="hasRole('admin')">
+            <a th:href="@{/produto/add}"
                 class="badge badge-pill badge-success badge-botao"> 
                 <i class="fa fa-plus-circle"></i> Novo
             </a>
@@ -68,9 +69,9 @@
             <table class="table table-striped">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Cód.</th>
                         <th>Nome</th>
-                        <th colspan="4">Cargo</th>
+                        <th>Preço</th>
+                        <th colspan="4">Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,19 +79,24 @@
                         <td th:text="${produto.nome}"></td>
                         <td th:text="${produto.preco}"></td>
                         <td th:text="${produto.tipo}"></td>
-                        <td class="tabela-controle">
+                        <td class="tabela-controle" sec:authorize="hasRole('admin')">
                             <a th:href="@{'/produto/view/' + ${produto.id} + '/' + ${false}}">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
                         </td>
-                        <td class="tabela-controle">
+                        <td class="tabela-controle" sec:authorize="hasRole('admin')">
                             <a th:href="@{'/produto/edit/' + ${produto.id}}">
                                 <i class="fa fa-edit" aria-hidden="true"></i>
                             </a>
                         </td>
                         <td class="tabela-controle-delete">
-                            <button type="button" class="btn btn-outline-danger"
-                            	th:onclick="|showModalDeletar(${produto.id})|">
+                            <button type="button" class="btn btn-outline-danger" sec:authorize="hasRole('admin')" th:onclick="|showModalDeletar(${produto.id})|" >
+                            	<i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                        <td class="tabela-controle-delete">
+                            <button type="button" class="btn btn-outline-dark" sec:authorize="hasRole('usuario')"
+                            	>Pedir
                             	<i class="fa fa-trash"></i>
                             </button>
                         </td>
@@ -101,6 +107,34 @@
         </div>
         
     </div>
+    <!-- Modal -->
+	<div id="modalDeletar" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      	<h4 class="modal-title">Atenção!</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        
+	      </div>
+	      <div class="modal-body">
+	        <p>Você deseja realmente deletar o Produto?</p>
+	      </div>
+	      <div class="modal-footer">
+	      	<input type="number" id="id_deletar" hidden>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+	        	<i class="fa fa-ban"></i> Cancelar
+			</button>
+	        <button type="button" class="btn btn-danger"
+	        	th:onclick="deletar('produto')">
+	        	<i class="fa fa-trash"></i> Deletar
+	        </button>
+	      </div>
+	    </div>
+	
+	  </div>
+	</div>
             <footer class="py-5 bg-dark">
                 <div class="container">
                     <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>

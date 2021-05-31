@@ -16,39 +16,35 @@
      <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
+            <div class="sidebar-heading border-bottom bg-light"><h4 sec:authorize="hasRole('admin')">Menager<i class="fas fa-briefcase icon"></i></h4> <h4 sec:authorize="hasRole('usuario')">User<i class="fas fa-user icon"></i></h4></div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/produto/list}">Home</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Pedidos</a>               
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" th:href="@{/usuario/edit}">Perfil</a>
-            </div>
+               <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/produto/list}">Home</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario') "href="#!">Pedidos</a>                           
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/usuario/edit}">Perfil</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/list}">Home</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/add}">Adicionar Produtos</a>               
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/pedidos/list}">Pedidos</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/usuario/list}">Usuario</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/usuario/edit}">Perfil</a>
+           		
+</div>
         </div>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <!-- Top navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
                 <div class="container-fluid">
-                    <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                    <button class="btn btn-light" id="sidebarToggle"><i class="fas fa-align-justify"></i></button>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                            <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#!">Action</a>
-                                    <a class="dropdown-item" href="#!">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#!">Something else here</a>
-                                </div>
-                            </li>
+                           
                         </ul>
-                        <form class="d-flex">
-                            <button class="btn btn-outline-dark" type="submit">
-                                <i class="bi-cart-fill me-1"></i>
-                                Cart
-                                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        <form class="d-flex bt">
+                            <button class="btn btn-outline-light" sec:authorize="hasRole('usuario')" type="submit">
+                               Cart
+                                <i class="fas fa-cart-plus"></i>
+                                <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
                             </button>
                         </form>
                          <form th:action="@{/logout}" class="navbar-form" method="POST">
@@ -61,28 +57,19 @@
             </nav>
 
 
+
     <!--CONTEÚDO-->
     <div class="container container-funcionario">
         
 		<div class="form-group form-titulo">
-        	<h4>Usuário</h4>
+        	<h4>Editar Perfil</h4>
 		</div>
 
         <form th:object="${usuario}"
             th:action="@{/usuario/save}" method="POST">
-            <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Código</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="codigo" th:field="${usuario.id}" readonly>
-                </div>    
-            </div>
+            
 
-            <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Nome</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="nome" th:field="${usuario.nome}" required>
-                </div>
-            </div>
+ 
             
             <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Login</label>
@@ -90,27 +77,39 @@
                     <input type="text" class="form-control" id="login" th:field="${usuario.login}" required>
                 </div>
             </div>
-            
-            <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Senha</label>
+         <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Cpf</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" id="senha" th:field="${usuario.senha}" required>
+                    <input type="text" class="form-control" id="cpf" th:field="${usuario.cpf}" required>
+                </div>
+            </div>
+             <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Rua</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="Rua" th:field="${usuario.rua}" required>
+                </div>
+            </div>
+             <div class="form-group row">
+                <label class="col-sm-3 col-form-label">numero</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" id="Numero" th:field="${usuario.numero}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Complemento</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="Complemento" th:field="${usuario.complemento}" required>
                 </div>
             </div>
             
-            <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Confirmar</label>
-                <div class="col-sm-9">
-                    <input type="password" class="form-control" id="senha" th:field="*{senha}" required>
-                </div>
-            </div>
+            
 
             <div class="form-group">
                     <button class="btn btn-secondary btn-width" type="button"
                         onclick="window.location.href='../'">
                         <i class="fa fa-ban" aria-hidden="true"></i> Cancelar
                     </button>
-                    <button class="btn btn-success btn-width" type="submit">
+                    <button class="btn btn-success btn-width btn-add" type="submit">
                         <i class="fa fa-save" aria-hidden="true"></i> Salvar
                     </button>
            </div>

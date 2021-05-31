@@ -53,15 +53,17 @@ public class ProdutoController {
 	public String saveProduto(Produto produto) {
 
 		produtoService.saveProduto(produto);
-		return "produto/list"; 
+		return "redirect:/produto/list"; 
 	}
 
 	// Editar produto
 
-	@GetMapping("/produto/edit")
-	public String editProduto() {
-
+	@GetMapping("/produto/edit/{id}")
+	public String editProduto(@PathVariable long id, Model model) {
+		
+		model.addAttribute("produto", produtoRepository.findById(id));
 		return "produto/edit";
+		
 	}
 	
 	@PutMapping("/produto/save/{id}")
@@ -69,12 +71,19 @@ public class ProdutoController {
 		
 		return produtoService.updateProduto(id, produto);
 	}
+	
+	
 
 	// Deletar produto
 
-	@DeleteMapping("/produto/delete/{id}")
-	public String deleteProduto(@PathVariable Long id) {
-
-		return produtoService.deleteProduto(id);
+	
+	@GetMapping("/produto/delete/{id}")
+	public String deleteProduto(@PathVariable long id) {
+		try {
+			produtoRepository.deleteById(id);
+		} catch (Exception e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+		return "redirect:/produto/list";
 	}
 }
