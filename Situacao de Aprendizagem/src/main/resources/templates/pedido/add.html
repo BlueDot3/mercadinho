@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos</title>
+    <title>Perdidos</title>
     <link rel="stylesheet" th:href="@{../css/style.css}">
     
     <link rel="stylesheet" th:href="@{../fontawesome-free-5.15.1-web/css/all.min.css}">
@@ -16,7 +16,7 @@
             <div class="sidebar-heading border-bottom bg-light"><h4 sec:authorize="hasRole('admin')">Menager<i class="fas fa-briefcase icon"></i></h4> <h4 sec:authorize="hasRole('usuario')">User<i class="fas fa-user icon"></i></h4></div>
             <div class="list-group list-group-flush">
                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/produto/list}">Home</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/pedido/list}">Pedidos</a>                           
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario') " th:href="@{/pedido/list}">Pedidos</a>                           
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/usuario/edit}">Perfil</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/list}">Home</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/add}">Adicionar Produtos</a>               
@@ -55,66 +55,28 @@
             <!-- Page content-->
             <div class="container container-funcionarios">
         <div class="form-titulo">
-            <h4>Controle de Usuarios</h4>
-        </div>
+            <div class="form-titulo">
+                <h4>Pedido</h4>
+            </div>
+            <form th:action="@{/pedido/save}" th:object="${pedido}" method="POST">
+                
+			
+                <div class="form-group">
+                    <label>Descricao</label>
+                    <input class="form-control" type="text" th:field="*{descricao}" autocomplete="off" required>
+                </div>
+               
 
-        <div class="form-tabela">
-            <table class="table table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Cpf</th>
-                        <th colspan="4">Login</th>
-                 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="usuario : ${usuarios}">
-                        <td th:text="${usuario.nome}"></td>
-                        <td th:text="${usuario.cpf}"></td>
-                        <td th:text="${usuario.login}"></td>
-                     
-                        <td class="tabela-controle-delete">
-                            <button type="button" class="btn btn-outline-danger" sec:authorize="hasRole('admin')" th:onclick="|showModalDeletar(${usuario.id})|" >
-                            	<i class="fa fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-
-            </table>
+               
+                <div class="form-group">
+                    <button class="btn btn-light text-light bg-dark btn-width btn-add" type="submit">
+                        <i class="fa fa-save" aria-hidden="true"></i> Salvar
+                    </button>
+                </div>
+            </form>
         </div>
-        
-    </div>
-    <!-- Modal -->
-	<div id="modalDeletar" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-	
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	      	<h4 class="modal-title">Atenção!</h4>
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        
-	      </div>
-	      <div class="modal-body">
-	        <p>Você deseja realmente deletar o Usuario?</p>
-	      </div>
-	      <div class="modal-footer">
-	      	<input type="number" id="id_deletar" hidden>
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-	        	<i class="fa fa-ban"></i> Cancelar
-			</button>
-	        <button type="button" class="btn btn-danger"
-	        	th:onclick="deletar('produto')">
-	        	<i class="fa fa-trash"></i> Deletar
-	        </button>
-	      </div>
-	    </div>
-	
-	  </div>
-	</div>
-            
+    </div>    
+         
             
    
 	<script th:src="@{/jquery-3.5.1/jquery-3.5.1.js}"></script>

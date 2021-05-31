@@ -21,11 +21,11 @@
             <div class="sidebar-heading border-bottom bg-light"><h4 sec:authorize="hasRole('admin')">Menager<i class="fas fa-briefcase icon"></i></h4> <h4 sec:authorize="hasRole('usuario')">User<i class="fas fa-user icon"></i></h4></div>
             <div class="list-group list-group-flush">
                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/produto/list}">Home</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario') "href="#!">Pedidos</a>                           
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/pedido/list}">Pedidos</a>                           
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/usuario/edit}">Perfil</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/list}">Home</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/add}">Adicionar Produtos</a>               
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/pedidos/list}">Pedidos</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/pedido/list}">Pedidos</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/usuario/list}">Usuario</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/usuario/edit}">Perfil</a>
            		

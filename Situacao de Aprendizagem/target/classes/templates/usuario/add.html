@@ -26,34 +26,34 @@
                    
                     <label class="label-input" for="">
                         <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="Nome" name="nome" th:field="*{nome}"  minlength="7" maxlength=60 required />
+                        <input type="text" placeholder="Nome" name="nome" th:field="*{nome}"  minlength="7" maxlength=60 autocomplete="off" required />
                     </label>
                     
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input  placeholder="Email" name="login" th:field="*{login}" type="text" minlength="7" maxlength=60 required />
+                        <input  placeholder="Email" name="login" th:field="*{login}" type="text" minlength="7" maxlength=60 autocomplete="off" required />
                     </label>
                     
                     <label class="label-input" for="">
                         <i class="far fa-address-card icon-modify"></i>
-                        <input type="text" placeholder="Cpf" name="Cpf" th:field="*{cpf}"  minlength="11" maxlength=11 required />
+                        <input type="text" placeholder="Cpf" name="Cpf" th:field="*{cpf}"  minlength="11" maxlength=11 autocomplete="off" required />
                     </label>
                     
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" id="senha1" placeholder="Senha" name="senha" th:field="*{senha}"  minlength="4" maxlength=60 required  />
+                        <input type="password" id="senha1" placeholder="Senha" name="senha" th:field="*{senha}"  minlength="4" autocomplete="off" maxlength=60 required  />
                     </label>
                     <label class="label-input" for="">
                        <i class="fas fa-clipboard-list icon-modify"></i>
-                        <input type="text" placeholder="Rua"  name="rua" th:field="*{rua}" minlength="4" maxlength=60 required  />
+                        <input type="text" placeholder="Rua"  name="rua" th:field="*{rua}" minlength="4" maxlength=60 autocomplete="off" required  />
                     </label>
                     <label class="label-input" for="">
                         <i class="fas fa-clipboard-list icon-modify"></i>
-                        <input  placeholder="Numero" name="numero" th:field="*{numero}" type="number" minlength="1" maxlength=10 required />
+                        <input  placeholder="Numero" name="numero" th:field="*{numero}" type="number" minlength="1" maxlength=10 autocomplete="off" required />
                     </label>
                     <label class="label-input" for="">
                         <i class="fas fa-clipboard-list icon-modify"></i>
-                        <input  placeholder="Complemento" name="complemento" th:field="*{complemento}" type="text" minlength="3" maxlength=10 required />
+                        <input  placeholder="Complemento" name="complemento" th:field="*{complemento}" type="text" minlength="3" autocomplete="off" maxlength=10 required />
                     </label>
           
                     <button class="btn btn-second" type="submit">sign up</button>        

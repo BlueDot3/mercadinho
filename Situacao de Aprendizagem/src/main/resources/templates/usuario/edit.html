@@ -19,11 +19,11 @@
             <div class="sidebar-heading border-bottom bg-light"><h4 sec:authorize="hasRole('admin')">Menager<i class="fas fa-briefcase icon"></i></h4> <h4 sec:authorize="hasRole('usuario')">User<i class="fas fa-user icon"></i></h4></div>
             <div class="list-group list-group-flush">
                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/produto/list}">Home</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario') "href="#!">Pedidos</a>                           
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario') " th:href="@{/pedido/list}">Pedidos</a>                           
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/usuario/edit}">Perfil</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/list}">Home</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/add}">Adicionar Produtos</a>               
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/pedidos/list}">Pedidos</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/pedido/list}">Pedidos</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/usuario/list}">Usuario</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/usuario/edit}">Perfil</a>
            		
@@ -41,7 +41,13 @@
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                            
                         </ul>
-                        
+                        <form class="d-flex bt">
+                            <a class="btn btn-outline-light" sec:authorize="hasRole('usuario')" th:href="@{/pedido/add}">
+                               Cart
+                                <i class="fas fa-cart-plus"></i>
+                                <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+       </a>
+                        </form>
                          <form th:action="@{/logout}" class="navbar-form" method="POST">
 					<button class="btn btn-dark" type="submit">
 						<i class="fas fa-sign-out-alt"></i> Sair
@@ -59,20 +65,13 @@
         	<h4>Usuário</h4>
 		</div>
 
-        <form class="bumbum" th:object="${usuario}"
+        <form class="navbar-form" th:object="${usuario}"
             th:action="@{/usuario/save}" method="POST">
-            <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Código</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control" id="codigo" th:field="${usuario.id}" readonly>
-                </div>    
-            </div>
-
-            <div class="form-group row">
+            <div class="form-group row" sec:authorize="hasRole('usuario')">
                 <label class="col-sm-3 col-form-label">Nome</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control" id="nome" th:field="${usuario.nome}" required>
-                </div>
+                </div>   
             </div>
             
             <div class="form-group row">
@@ -83,22 +82,31 @@
             </div>
             
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Senha</label>
+                <label class="col-sm-3 col-form-label">Rua</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" id="senha" th:field="${usuario.senha}" required>
+                    <input type="text" class="form-control" id="rua" th:field="${usuario.rua}" required>
                 </div>
             </div>
             
             <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Confirmar</label>
+                <label class="col-sm-3 col-form-label">numero</label>
                 <div class="col-sm-9">
-                    <input type="password" class="form-control" id="senha" th:field="*{senha}" required>
+                    <input type="number" class="form-control" id="numero" th:field="${usuario.numero}" required>
                 </div>
             </div>
+            
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Complemento</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="complemento" th:field="${usuario.complemento}" required>
+                </div>
+            </div>
+            
+            
 
             <div class="form-group row btn_chave">
                     
-                    <button class="btn btn-success btn-width" type="submit">
+                    <button class="btn btn-success btn-width btn-add" type="submit">
                         <i class="fa fa-save" aria-hidden="true"></i> Salvar
                     </button>
            </div>

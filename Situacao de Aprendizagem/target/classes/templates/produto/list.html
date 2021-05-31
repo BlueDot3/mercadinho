@@ -16,11 +16,11 @@
             <div class="sidebar-heading border-bottom bg-light"><h4 sec:authorize="hasRole('admin')">Menager<i class="fas fa-briefcase icon"></i></h4> <h4 sec:authorize="hasRole('usuario')">User<i class="fas fa-user icon"></i></h4></div>
             <div class="list-group list-group-flush">
                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/produto/list}">Home</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario') "href="#!">Pedidos</a>                           
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/pedido/list}">Pedidos</a>                           
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('usuario')" th:href="@{/usuario/edit}">Perfil</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/list}">Home</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/produto/add}">Adicionar Produtos</a>               
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/pedidos/list}">Pedidos</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/pedido/list}">Pedidos</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/usuario/list}">Usuario</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" sec:authorize="hasRole('admin')" th:href="@{/usuario/edit}">Perfil</a>
            		
@@ -38,11 +38,11 @@
                            
                         </ul>
                         <form class="d-flex bt">
-                            <button class="btn btn-outline-light" sec:authorize="hasRole('usuario')" type="submit">
+                            <a class="btn btn-outline-light" sec:authorize="hasRole('usuario')" th:href="@{/pedido/add}">
                                Cart
                                 <i class="fas fa-cart-plus"></i>
                                 <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
-                            </button>
+       </a>
                         </form>
                          <form th:action="@{/logout}" class="navbar-form" method="POST">
 					<button class="btn btn-dark" type="submit">
@@ -80,11 +80,6 @@
                         <td th:text="${produto.preco}"></td>
                         <td th:text="${produto.tipo}"></td>
                         <td class="tabela-controle" sec:authorize="hasRole('admin')">
-                            <a th:href="@{'/produto/view/' + ${produto.id} + '/' + ${false}}">
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                        </td>
-                        <td class="tabela-controle" sec:authorize="hasRole('admin')">
                             <a th:href="@{'/produto/edit/' + ${produto.id}}">
                                 <i class="fa fa-edit" aria-hidden="true"></i>
                             </a>
@@ -94,11 +89,10 @@
                             	<i class="fa fa-trash"></i>
                             </button>
                         </td>
-                        <td class="tabela-controle-delete">
-                            <button type="button" class="btn btn-outline-dark" sec:authorize="hasRole('usuario')"
-                            	>Pedir
+                        <td class="btn btn-outline-light" sec:authorize="hasRole('usuario')">
+                            <a class="btn btn-outline-danger" th:href="@{/prduto/add}">Pedir
                             	<i class="fa fa-trash"></i>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                 </tbody>
@@ -135,11 +129,7 @@
 	
 	  </div>
 	</div>
-            <footer class="py-5 bg-dark">
-                <div class="container">
-                    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
-                </div>
-            </footer>
+            
             
    
 	<script th:src="@{/jquery-3.5.1/jquery-3.5.1.js}"></script>
